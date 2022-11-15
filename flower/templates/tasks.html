@@ -42,7 +42,13 @@
       <td>{{ task.name }}</td>
       <td>{{ task.uuid }}</td>
       <td>{{ task.state }}</td>
-      <td>{{ task.args }}</td>
+      <td>
+        {% if 'sql_lab' in task.name %}
+            {{ 'SQL query content not shown.' }}
+        {% else %}
+            {{ task.args }}
+        {% end %}
+      </td>
       <td>{{ task.kwargs }}</td>
       <td>
         {% if task.state == "SUCCESS" %}

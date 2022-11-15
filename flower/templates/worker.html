@@ -221,7 +221,13 @@
                       <td><a href="{{ reverse_url('task', task['id']) }}">{{ task['id'] }}</a></td>
                       <td>{{ task['acknowledged'] }}</td>
                       <td>{{ task['worker_pid'] }}</td>
-                      <td>{{ task.get('args', 'N/A') }}</td>
+                      <td>
+                        {% if 'sql_lab' in task['name'] %}
+                            {{ 'SQL query content not shown.' }}
+                        {% else %}
+                            {{ task.get('args', 'N/A') }}
+                        {% end %}
+                      </td>
                       <td>{{ task.get('kwargs', 'N/A') }}</td>
                     </tr>
                   {% end %}
@@ -243,7 +249,13 @@
                     <tr>
                       <td>{{ task['request']['name'] }}</td>
                       <td><a href="{{ reverse_url('task', task['request']['id']) }}">{{ task['request']['id'] }}</a></td>
-                      <td>{{ task['request']['args'] }}</td>
+                      <td>
+                        {% if 'sql_lab' in task['request']['name'] %}
+                            {{ 'SQL query content not shown.' }}
+                        {% else %}
+                            {{ task['request']['args'] }}
+                        {% end %}
+                      </td>
                       <td>{{ task['request']['kwargs'] }}</td>
                     </tr>
                   {% end %}
@@ -265,7 +277,13 @@
                     <tr>
                       <td>{{ task['name'] }}</td>
                       <td><a href="{{ reverse_url('task', task['id']) }}">{{ task['id'] }}</a></td>
-                      <td>{{ task['args'] }}</td>
+                      <td>
+                        {% if 'sql_lab' in task['name'] %}
+                            {{ 'SQL query content not shown.' }}
+                        {% else %}
+                            {{ task['args'] }}
+                        {% end %}
+                      </td>
                       <td>{{ task['kwargs'] }}</td>
                     </tr>
                   {% end %}

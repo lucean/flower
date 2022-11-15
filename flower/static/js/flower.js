@@ -579,7 +579,13 @@ var flower = (function () {
                 targets: 3,
                 data: 'args',
                 visible: isColumnVisible('args'),
-                render: htmlEscapeEntities
+                render: function(data, type, full, meta) {
+                    if (data.includes("SELECT")) { // naive example
+                        return "SQL query content not shown."
+                    } else {
+                        return htmlEscapeEntities(data)
+                    }
+                }
             }, {
                 targets: 4,
                 data: 'kwargs',

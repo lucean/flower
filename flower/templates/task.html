@@ -46,7 +46,13 @@
               </tr>
               <tr>
                 <td>args</td>
-                <td>{{ task.args }}</td>
+                <td>
+                  {% if 'sql_lab' in getattr(task, 'name', None) %}
+                    {{ 'SQL query content not shown.' }}
+                  {% else %}
+                    {{ task.args }}
+                  {% end %}
+                </td>
               </tr>
               <tr>
                 <td>kwargs</td>
