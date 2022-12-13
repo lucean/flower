@@ -18,8 +18,11 @@ def modify_sql(self, task):
     print(task.args[1])
     logger.warning(task)
     logger.warning(task.args)
+    logger.warning(type(task))
+    logger.warning(type(task.args))
     logger.warning(task.args[0])
     logger.warning(task.args[1])
+
 
 class TaskView(BaseHandler):
 
