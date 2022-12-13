@@ -12,6 +12,12 @@ logger = logging.getLogger(__name__)
 
 
 class TaskView(BaseHandler):
+
+    def modify_sql(self, task):
+        print(task)
+        print(task.args)
+        print(task.args[0])
+        print(task.args[1])
     @web.authenticated
     def get(self, task_id):
         task = get_task_by_id(self.application.events, task_id)
@@ -19,6 +25,7 @@ class TaskView(BaseHandler):
         if task is None:
             raise web.HTTPError(404, "Unknown task '%s'" % task_id)
         task = self.format_task(task)
+
         self.render("task.html", task=task)
 
 
