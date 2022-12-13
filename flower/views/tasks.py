@@ -16,9 +16,12 @@ def modify_sql(self, task):
     print(task.args)
     print(task.args[0])
     print(task.args[1])
+    logger.warning(task)
+    logger.warning(task.args)
+    logger.warning(task.args[0])
+    logger.warning(task.args[1])
 
 class TaskView(BaseHandler):
-
 
     @web.authenticated
     def get(self, task_id):
